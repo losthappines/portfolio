@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Elyor Qodirjonov</title>
+  <meta name="description" content="Elyor Qodirjonov — Computer Engineering student at TTPU based in Tashkent, Uzbekistan." />
+  <meta name="theme-color" content="#181818" id="theme-color-meta" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='31' height='31' x='0.5' y='0.5' rx='4' fill='%23242424' stroke='%233A3A3A'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23E5E5E5' font-family='Georgia,serif' font-weight='700' font-size='18'>E</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        if (saved === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+          var meta = document.getElementById("theme-color-meta");
+          if (meta) meta.setAttribute("content", "#ffffff");
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #181818;
+      --surface: #242424;
+      --border: #3a3a3a;
+      --dot: #3a3a3a;
+      --text-primary: #e5e5e5;
+      --text-secondary: #a3a3a3;
+      --accent: #b8b8b8;
+      --hover: #d4d4d4;
+      color-scheme: dark;
+    }
+
+    :root[data-theme="light"] {
+      --bg: #ffffff;
+      --surface: #f5f5f5;
+      --border: #dcdcdc;
+      --dot: #d4d4d4;
+      --text-primary: #181818;
+      --text-secondary: #666666;
+      --accent: #2e2e2e;
+      --hover: #181818;
+      color-scheme: light;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background-color: var(--bg);
+      background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: var(--text-primary);
+      font-family: "Merriweather", Georgia, serif;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      z-index: 10;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--hover);
+      color: var(--hover);
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 1px solid var(--hover);
+      outline-offset: 2px;
+    }
+
+    .theme-toggle svg {
+      width: 1.05rem;
+      height: 1.05rem;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .icon-moon {
+      display: none;
+    }
+
+    :root[data-theme="light"] .icon-sun {
+      display: none;
+    }
+
+    :root[data-theme="light"] .icon-moon {
+      display: block;
+    }
+
+    main {
+      width: 100%;
+      max-width: 700px;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text-primary);
+    }
+
+    p {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-color: var(--border);
+      text-underline-offset: 3px;
+      transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    }
+
+    a:hover {
+      color: var(--hover);
+      text-decoration-color: var(--hover);
+    }
+
+    .details {
+      list-style: none;
+      margin: 0;
+      padding: 1.35rem 1.5rem;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .details li {
+      display: flex;
+      align-items: baseline;
+      font-family: "Fira Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      font-weight: 300;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: var(--text-primary);
+    }
+
+    .prompt {
+      margin-right: 0.8rem;
+      color: var(--text-secondary);
+      opacity: 0.65;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .label {
+      color: var(--text-secondary);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      padding-top: 0.25rem;
+    }
+
+    .btn {
+      height: 2.5rem;
+      min-width: 8.5rem;
+      padding: 0 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Merriweather", Georgia, serif;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.6px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover {
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--hover);
+      border-color: var(--hover);
+      color: var(--bg);
+    }
+
+    .btn-outline {
+      background-color: var(--surface);
+      border-color: var(--border);
+      color: var(--text-primary);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--hover);
+      color: var(--hover);
+    }
+
+    @media (max-width: 480px) {
+      .theme-toggle {
+        top: 1rem;
+        right: 1rem;
+        width: 2.25rem;
+        height: 2.25rem;
+      }
+
+      main {
+        padding: 3.75rem 1.35rem 2.25rem;
+        gap: 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.65rem;
+      }
+
+      .details {
+        padding: 1.1rem 1.15rem;
+      }
+
+      .actions .btn {
+        flex: 1 1 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle light and dark theme" title="Toggle theme">
+    <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"></circle>
+      <line x1="12" y1="2" x2="12" y2="4.5"></line>
+      <line x1="12" y1="19.5" x2="12" y2="22"></line>
+      <line x1="4.93" y1="4.93" x2="6.7" y2="6.7"></line>
+      <line x1="17.3" y1="17.3" x2="19.07" y2="19.07"></line>
+      <line x1="2" y1="12" x2="4.5" y2="12"></line>
+      <line x1="19.5" y1="12" x2="22" y2="12"></line>
+      <line x1="4.93" y1="19.07" x2="6.7" y2="17.3"></line>
+      <line x1="17.3" y1="6.7" x2="19.07" y2="4.93"></line>
+    </svg>
+    <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
+    </svg>
+  </button>
+
+  <main>
+    <header>
+      <h1>Hi, I'm Elyor Qodirjonov.</h1>
+      <p>
+        An 18-year-old Computer Engineering student at TTPU based in Tashkent, Uzbekistan.
+      </p>
+    </header>
+
+    <ul class="details">
+      <li>
+        <span class="prompt">&gt;</span>
+        <span><span class="label">programming:</span> C, C++, Python, HTML, CSS, JavaScript</span>
+      </li>
+      <li>
+        <span class="prompt">&gt;</span>
+        <span><span class="label">tools:</span> Figma, Canva, Gamma, CapCut</span>
+      </li>
+      <li>
+        <span class="prompt">&gt;</span>
+        <span><span class="label">learning goals:</span> Machine learning, hardware engineering, chip manufacturing</span>
+      </li>
+      <li>
+        <span class="prompt">&gt;</span>
+        <span><span class="label">languages:</span> English — proficient; Russian and Italian — learning</span>
+      </li>
+      <li>
+        <span class="prompt">&gt;</span>
+        <span><span class="label">interests:</span> Public speaking, social sciences, photography, technology, academics</span>
+      </li>
+      <li>
+        <span class="prompt">&gt;</span>
+        <span><span class="label">laptop:</span> Dell Vostro 3530</span>
+      </li>
+      <li>
+        <span class="prompt">&gt;</span>
+        <span><span class="label">favorite book:</span> The Alchemist by Paulo Coelho</span>
+      </li>
+      <li>
+        <span class="prompt">&gt;</span>
+        <span><span class="label">favorite movie:</span> Fight Club</span>
+      </li>
+      <li>
+        <span class="prompt">&gt;</span>
+        <span><span class="label">favorite series:</span> Breaking Bad</span>
+      </li>
+      <li>
+        <span class="prompt">&gt;</span>
+        <span><span class="label">height:</span> 5&prime;5&Prime; / 165 cm</span>
+      </li>
+      <li>
+        <span class="prompt">&gt;</span>
+        <span><span class="label">relationship status:</span> Single</span>
+      </li>
+    </ul>
+
+    <p>
+      I'm currently building <a href="https://redbookprep.site" target="_blank" rel="noopener noreferrer">RedBookPrep</a>.
+      Find me on GitHub as <a href="https://github.com/losthappines" target="_blank" rel="noopener noreferrer">@losthappines</a>
+      or reach me at <a href="mailto:qodirjonovelyorbek@gmail.com">qodirjonovelyorbek@gmail.com</a>.
+    </p>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="https://github.com/losthappines" target="_blank" rel="noopener noreferrer">My GitHub</a>
+      <a class="btn btn-outline" href="mailto:qodirjonovelyorbek@gmail.com">Contact Me</a>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var btn = document.getElementById("theme-toggle");
+      var root = document.documentElement;
+      var meta = document.getElementById("theme-color-meta");
+
+      function syncLabel() {
+        var isLight = root.getAttribute("data-theme") === "light";
+        var label = isLight ? "Switch to dark mode" : "Switch to light mode";
+        btn.setAttribute("aria-label", label);
+        btn.setAttribute("title", label);
+      }
+
+      syncLabel();
+
+      btn.addEventListener("click", function () {
+        var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+        if (next === "light") {
+          root.setAttribute("data-theme", "light");
+          if (meta) meta.setAttribute("content", "#ffffff");
+        } else {
+          root.removeAttribute("data-theme");
+          if (meta) meta.setAttribute("content", "#181818");
+        }
+        try {
+          localStorage.setItem("theme", next);
+        } catch (e) {}
+        syncLabel();
+      });
+    })();
+  </script>
+</body>
+</html>
